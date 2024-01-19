@@ -15,5 +15,6 @@ struct PopularObj: Codable{
     let source: String?
     let type: String?
     let published_date: String?
-//    let amazon_product_url: String?
+    
+    let abstract: String?
 }

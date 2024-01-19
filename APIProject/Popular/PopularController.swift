@@ -33,7 +33,7 @@ class PopularController: UIViewController {
     
     func fetchPopular() async {
         activityIndicator.startAnimating()
-        let popularAPI = Popular() 
+        let popularAPI = NetworkCall()
 
         do {
             guard let url = URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
@@ -41,7 +41,7 @@ class PopularController: UIViewController {
                 return
             }
 
-            if let popularData = try await popularAPI.fetch(url: url) {
+            if let popularData = try await popularAPI.PopularFetch(url: url) {
                 self.popularModel = popularData
                 self.activityIndicator.stopAnimating()
 //                print("Fetched books data: \(popularData)")
@@ -65,10 +65,23 @@ extension PopularController: UITableViewDelegate, UITableViewDataSource {
         if let results = popularModel?.results?[indexPath.row] {
             cell.updateCell(with: results)
         }
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         170
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedData = popularModel?.results?[indexPath.row]
+//        print(selectedData!)
+        let detailsView = PopularDetailsViewController()
+        
+        detailsView.popularData = selectedData
+        navigationController?.pushViewController(detailsView, animated: true)
+        
+        
     }
 }

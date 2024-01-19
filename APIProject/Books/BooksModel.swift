@@ -21,5 +21,6 @@ struct BooksObj: Codable{
     let author: String?
     let price: String?
     let book_image: String?
+    let description: String?
     let amazon_product_url: String?
 }

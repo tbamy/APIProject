@@ -18,12 +18,15 @@
 		A68F18E32B593B6300265EAE /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18E12B593B6300265EAE /* BooksTableViewCell.swift */; };
 		A68F18E42B593B6300265EAE /* BooksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F18E22B593B6300265EAE /* BooksTableViewCell.xib */; };
 		A68F18E62B59416500265EAE /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18E52B59416500265EAE /* BooksModel.swift */; };
-		A68F18E82B5942D000265EAE /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18E72B5942D000265EAE /* Books.swift */; };
 		A68F18EC2B59581D00265EAE /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18EA2B59581D00265EAE /* PopularTableViewCell.swift */; };
 		A68F18ED2B59581D00265EAE /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F18EB2B59581D00265EAE /* PopularTableViewCell.xib */; };
 		A68F18EF2B59582F00265EAE /* PopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18EE2B59582F00265EAE /* PopularModel.swift */; };
-		A68F18F12B59583D00265EAE /* Popular.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18F02B59583D00265EAE /* Popular.swift */; };
+		A68F18F12B59583D00265EAE /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F18F02B59583D00265EAE /* NetworkCall.swift */; };
 		A68F19142B59740200265EAE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A68F19132B59740200265EAE /* Kingfisher */; };
+		A68F19172B5A6F2500265EAE /* PopularDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F19152B5A6F2500265EAE /* PopularDetailsViewController.swift */; };
+		A68F19182B5A6F2500265EAE /* PopularDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */; };
+		A68F191B2B5A6FD800265EAE /* BooksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */; };
+		A68F191C2B5A6FD800265EAE /* BooksDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +43,14 @@
 		A68F18E12B593B6300265EAE /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 		A68F18E22B593B6300265EAE /* BooksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksTableViewCell.xib; sourceTree = "<group>"; };
 		A68F18E52B59416500265EAE /* BooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
-		A68F18E72B5942D000265EAE /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		A68F18EA2B59581D00265EAE /* PopularTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTableViewCell.swift; sourceTree = "<group>"; };
 		A68F18EB2B59581D00265EAE /* PopularTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularTableViewCell.xib; sourceTree = "<group>"; };
 		A68F18EE2B59582F00265EAE /* PopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularModel.swift; sourceTree = "<group>"; };
-		A68F18F02B59583D00265EAE /* Popular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popular.swift; sourceTree = "<group>"; };
+		A68F18F02B59583D00265EAE /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
+		A68F19152B5A6F2500265EAE /* PopularDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDetailsViewController.swift; sourceTree = "<group>"; };
+		A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularDetailsViewController.xib; sourceTree = "<group>"; };
+		A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDetailViewController.swift; sourceTree = "<group>"; };
+		A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +93,7 @@
 				A68F18D12B5927F700265EAE /* LaunchScreen.storyboard */,
 				A68F18D42B5927F700265EAE /* Info.plist */,
 				A68F18DA2B59383A00265EAE /* TabBarController.swift */,
-				A68F18DC2B59385E00265EAE /* BooksController.swift */,
-				A68F18DE2B59387600265EAE /* PopularController.swift */,
+				A68F18F02B59583D00265EAE /* NetworkCall.swift */,
 			);
 			path = APIProject;
 			sourceTree = "<group>";
@@ -96,10 +101,12 @@
 		A68F18E02B593B3100265EAE /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				A68F18DC2B59385E00265EAE /* BooksController.swift */,
 				A68F18E12B593B6300265EAE /* BooksTableViewCell.swift */,
 				A68F18E22B593B6300265EAE /* BooksTableViewCell.xib */,
 				A68F18E52B59416500265EAE /* BooksModel.swift */,
-				A68F18E72B5942D000265EAE /* Books.swift */,
+				A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */,
+				A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -107,10 +114,12 @@
 		A68F18E92B5957FC00265EAE /* Popular */ = {
 			isa = PBXGroup;
 			children = (
+				A68F18DE2B59387600265EAE /* PopularController.swift */,
 				A68F18EA2B59581D00265EAE /* PopularTableViewCell.swift */,
 				A68F18EB2B59581D00265EAE /* PopularTableViewCell.xib */,
 				A68F18EE2B59582F00265EAE /* PopularModel.swift */,
-				A68F18F02B59583D00265EAE /* Popular.swift */,
+				A68F19152B5A6F2500265EAE /* PopularDetailsViewController.swift */,
+				A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -180,7 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68F18E42B593B6300265EAE /* BooksTableViewCell.xib in Resources */,
+				A68F191C2B5A6FD800265EAE /* BooksDetailViewController.xib in Resources */,
 				A68F18D32B5927F700265EAE /* LaunchScreen.storyboard in Resources */,
+				A68F19182B5A6F2500265EAE /* PopularDetailsViewController.xib in Resources */,
 				A68F18D02B5927F700265EAE /* Assets.xcassets in Resources */,
 				A68F18CE2B5927F500265EAE /* Main.storyboard in Resources */,
 				A68F18ED2B59581D00265EAE /* PopularTableViewCell.xib in Resources */,
@@ -195,16 +206,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68F18EC2B59581D00265EAE /* PopularTableViewCell.swift in Sources */,
+				A68F19172B5A6F2500265EAE /* PopularDetailsViewController.swift in Sources */,
 				A68F18DD2B59385E00265EAE /* BooksController.swift in Sources */,
 				A68F18E62B59416500265EAE /* BooksModel.swift in Sources */,
 				A68F18DB2B59383A00265EAE /* TabBarController.swift in Sources */,
 				A68F18C72B5927F500265EAE /* AppDelegate.swift in Sources */,
 				A68F18C92B5927F500265EAE /* SceneDelegate.swift in Sources */,
-				A68F18E82B5942D000265EAE /* Books.swift in Sources */,
+				A68F191B2B5A6FD800265EAE /* BooksDetailViewController.swift in Sources */,
 				A68F18EF2B59582F00265EAE /* PopularModel.swift in Sources */,
 				A68F18DF2B59387600265EAE /* PopularController.swift in Sources */,
 				A68F18E32B593B6300265EAE /* BooksTableViewCell.swift in Sources */,
-				A68F18F12B59583D00265EAE /* Popular.swift in Sources */,
+				A68F18F12B59583D00265EAE /* NetworkCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

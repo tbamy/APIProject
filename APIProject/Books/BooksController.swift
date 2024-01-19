@@ -36,7 +36,7 @@ class BooksController: UIViewController {
     
     func fetchBooks() async {
         activityIndicator.startAnimating()
-        let booksAPI = Books()
+        let booksAPI = NetworkCall()
 
         do {
             guard let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
@@ -44,7 +44,7 @@ class BooksController: UIViewController {
                 return
             }
 
-            if let booksData = try await booksAPI.fetch(url: url) {
+            if let booksData = try await booksAPI.BooksFetch(url: url) {
                 self.booksModel = booksData
                 self.activityIndicator.stopAnimating()
 //                print("Fetched books data: \(booksData)")
@@ -68,11 +68,22 @@ extension BooksController: UITableViewDelegate, UITableViewDataSource {
         if let book = booksModel?.results?.books?[indexPath.row] {
             cell.updateCell(with: book)
         }
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedData = booksModel?.results?.books?[indexPath.row]
+        let detailsView = BooksDetailViewController()
+        detailsView.bookData = selectedData
+        navigationController?.pushViewController(detailsView, animated: true)
+        
+        
     }
 }
 
