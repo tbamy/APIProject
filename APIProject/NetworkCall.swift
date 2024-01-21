@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct NetworkCall{
+class NetworkCall{
     let session = URLSession.shared
     func PopularFetch(url: URL) async throws -> PopularModel? {
         do{
             let (data, _) = try await session.data(from: url)
             let jsonDecoder = JSONDecoder()
-            let booksModel = try jsonDecoder.decode(PopularModel.self, from: data)
-            return booksModel
+            let popularModel = try jsonDecoder.decode(PopularModel.self, from: data)
+            return popularModel
         }catch{
             throw error
         }

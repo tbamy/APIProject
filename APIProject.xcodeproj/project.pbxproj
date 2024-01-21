@@ -27,6 +27,9 @@
 		A68F19182B5A6F2500265EAE /* PopularDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */; };
 		A68F191B2B5A6FD800265EAE /* BooksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */; };
 		A68F191C2B5A6FD800265EAE /* BooksDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */; };
+		A68F191E2B5D310000265EAE /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F191D2B5D310000265EAE /* BooksViewModel.swift */; };
+		A68F19202B5DA87C00265EAE /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F191F2B5DA87C00265EAE /* DIContainer.swift */; };
+		A68F19222B5DCC5F00265EAE /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F19212B5DCC5F00265EAE /* PopularViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularDetailsViewController.xib; sourceTree = "<group>"; };
 		A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDetailViewController.swift; sourceTree = "<group>"; };
 		A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksDetailViewController.xib; sourceTree = "<group>"; };
+		A68F191D2B5D310000265EAE /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		A68F191F2B5DA87C00265EAE /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		A68F19212B5DCC5F00265EAE /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 				A68F18D42B5927F700265EAE /* Info.plist */,
 				A68F18DA2B59383A00265EAE /* TabBarController.swift */,
 				A68F18F02B59583D00265EAE /* NetworkCall.swift */,
+				A68F191F2B5DA87C00265EAE /* DIContainer.swift */,
 			);
 			path = APIProject;
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 				A68F18E52B59416500265EAE /* BooksModel.swift */,
 				A68F19192B5A6FD800265EAE /* BooksDetailViewController.swift */,
 				A68F191A2B5A6FD800265EAE /* BooksDetailViewController.xib */,
+				A68F191D2B5D310000265EAE /* BooksViewModel.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 				A68F18EE2B59582F00265EAE /* PopularModel.swift */,
 				A68F19152B5A6F2500265EAE /* PopularDetailsViewController.swift */,
 				A68F19162B5A6F2500265EAE /* PopularDetailsViewController.xib */,
+				A68F19212B5DCC5F00265EAE /* PopularViewModel.swift */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -205,14 +214,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68F19202B5DA87C00265EAE /* DIContainer.swift in Sources */,
 				A68F18EC2B59581D00265EAE /* PopularTableViewCell.swift in Sources */,
 				A68F19172B5A6F2500265EAE /* PopularDetailsViewController.swift in Sources */,
 				A68F18DD2B59385E00265EAE /* BooksController.swift in Sources */,
 				A68F18E62B59416500265EAE /* BooksModel.swift in Sources */,
 				A68F18DB2B59383A00265EAE /* TabBarController.swift in Sources */,
+				A68F19222B5DCC5F00265EAE /* PopularViewModel.swift in Sources */,
 				A68F18C72B5927F500265EAE /* AppDelegate.swift in Sources */,
 				A68F18C92B5927F500265EAE /* SceneDelegate.swift in Sources */,
 				A68F191B2B5A6FD800265EAE /* BooksDetailViewController.swift in Sources */,
+				A68F191E2B5D310000265EAE /* BooksViewModel.swift in Sources */,
 				A68F18EF2B59582F00265EAE /* PopularModel.swift in Sources */,
 				A68F18DF2B59387600265EAE /* PopularController.swift in Sources */,
 				A68F18E32B593B6300265EAE /* BooksTableViewCell.swift in Sources */,

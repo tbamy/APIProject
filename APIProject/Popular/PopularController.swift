@@ -12,6 +12,9 @@ class PopularController: UIViewController {
     @IBOutlet weak var popularTable: UITableView!
     
     var popularModel: PopularModel?
+    var popularViewModel = DIContainer.shared.makepopularViewModel()
+    
+    
     let activityIndicator = UIActivityIndicatorView(style: .large)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,32 +30,45 @@ class PopularController: UIViewController {
         category.text = "Popular Stories"
         
         Task {
-            await fetchPopular()
+            await popularViewModel.fetchPopular()
+        }
+        activityIndicator.startAnimating()
+        popularViewModel.responseHandler = { [weak self] popularModel in
+            DispatchQueue.main.async { [weak self] in
+                self?.popularModel = popularModel
+                self?.activityIndicator.stopAnimating()
+                self?.popularTable.reloadData()
+            }
+        }
+        
+        popularViewModel.errorHandler = { error in
+            print("error is \(error!)")
         }
     }
     
-    func fetchPopular() async {
-        activityIndicator.startAnimating()
-        let popularAPI = NetworkCall()
-
-        do {
-            guard let url = URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
-                print("Invalid URL")
-                return
-            }
-
-            if let popularData = try await popularAPI.PopularFetch(url: url) {
-                self.popularModel = popularData
-                self.activityIndicator.stopAnimating()
-//                print("Fetched books data: \(popularData)")
-                self.popularTable.reloadData()
-            } else {
-                print("No data received")
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+//    func fetchPopular() async {
+//        activityIndicator.startAnimating()
+//        let popularAPI = NetworkCall()
+//
+//        do {
+//            guard let url = URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
+//                print("Invalid URL")
+//                return
+//            }
+//
+//            if let popularData = try await popularAPI.PopularFetch(url: url) {
+//                self.popularModel = popularData
+//                self.activityIndicator.stopAnimating()
+////                print("Fetched books data: \(popularData)")
+//                self.popularTable.reloadData()
+//            } else {
+//                print("No data received")
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
+    
 }
 
 extension PopularController: UITableViewDelegate, UITableViewDataSource {
@@ -84,4 +100,20 @@ extension PopularController: UITableViewDelegate, UITableViewDataSource {
         
         
     }
+}
+
+extension PopularController: PopularViewModelDelegate{
+    func didReceiveResponse(data: PopularModel?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.popularModel = data
+            self?.activityIndicator.stopAnimating()
+            self?.popularTable.reloadData()
+        }
+    }
+    
+    func didReceiveError(error: String) {
+        print("error is \(error)")
+    }
+    
+    
 }

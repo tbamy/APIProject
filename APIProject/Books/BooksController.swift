@@ -14,6 +14,8 @@ class BooksController: UIViewController {
     
     var booksModel: BooksModel?
     
+    var bookViewModel = DIContainer.shared.makeBookViewModel()
+    
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
@@ -29,33 +31,49 @@ class BooksController: UIViewController {
         
         category.text = "Hardcover Fiction Books"
         
+        bookViewModel.delegate = self
+        
         Task {
-            await fetchBooks()
+            await bookViewModel.fetchBooks()
+        }
+        
+            activityIndicator.startAnimating()
+        bookViewModel.responseHandler = { [weak self] booksModel in
+            DispatchQueue.main.async { [weak self] in
+//                print(booksModel?.results)
+                self?.booksModel = booksModel
+                self?.activityIndicator.stopAnimating()
+                self?.booksTable.reloadData()
+            }
+        }
+        
+        bookViewModel.errorHandler = { error in
+            print("error is \(error!)")
         }
     }
     
-    func fetchBooks() async {
-        activityIndicator.startAnimating()
-        let booksAPI = NetworkCall()
-
-        do {
-            guard let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
-                print("Invalid URL")
-                return
-            }
-
-            if let booksData = try await booksAPI.BooksFetch(url: url) {
-                self.booksModel = booksData
-                self.activityIndicator.stopAnimating()
-//                print("Fetched books data: \(booksData)")
-                self.booksTable.reloadData()
-            } else {
-                print("No data received")
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+//    func fetchBooks() async {
+//        activityIndicator.startAnimating()
+//        let booksAPI = NetworkCall()
+//
+//        do {
+//            guard let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN") else {
+//                print("Invalid URL")
+//                return
+//            }
+//
+//            if let booksData = try await booksAPI.BooksFetch(url: url) {
+//                self.booksModel = booksData
+//                self.activityIndicator.stopAnimating()
+////                print("Fetched books data: \(booksData)")
+//                self.booksTable.reloadData()
+//            } else {
+//                print("No data received")
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
 }
 
 extension BooksController: UITableViewDelegate, UITableViewDataSource {
@@ -85,6 +103,22 @@ extension BooksController: UITableViewDelegate, UITableViewDataSource {
         
         
     }
+}
+
+extension BooksController: BooksViewModelDelegate{
+    func didReceiveResponse(data: BooksModel?) {
+//        DispatchQueue.main.async { [weak self] in
+//            self?.booksModel = data
+//            self?.activityIndicator.stopAnimating()
+//            self?.booksTable.reloadData()
+//        }
+    }
+    
+    func didReceiveError(error: String) {
+        print("error is \(error)")
+    }
+    
+    
 }
 
 
