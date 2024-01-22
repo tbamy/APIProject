@@ -39,12 +39,14 @@ class BooksController: UIViewController {
         
             activityIndicator.startAnimating()
         bookViewModel.responseHandler = { [weak self] booksModel in
-            DispatchQueue.main.async { [weak self] in
-//                print(booksModel?.results)
-                self?.booksModel = booksModel
-                self?.activityIndicator.stopAnimating()
-                self?.booksTable.reloadData()
-            }
+            self?.didReceiveResponse(data: booksModel)
+            
+//            DispatchQueue.main.async { [weak self] in
+////                print(booksModel?.results)
+//                self?.booksModel = booksModel
+//                self?.activityIndicator.stopAnimating()
+//                self?.booksTable.reloadData()
+//            }
         }
         
         bookViewModel.errorHandler = { error in
@@ -107,11 +109,11 @@ extension BooksController: UITableViewDelegate, UITableViewDataSource {
 
 extension BooksController: BooksViewModelDelegate{
     func didReceiveResponse(data: BooksModel?) {
-//        DispatchQueue.main.async { [weak self] in
-//            self?.booksModel = data
-//            self?.activityIndicator.stopAnimating()
-//            self?.booksTable.reloadData()
-//        }
+        DispatchQueue.main.async { [weak self] in
+            self?.booksModel = data
+            self?.activityIndicator.stopAnimating()
+            self?.booksTable.reloadData()
+        }
     }
     
     func didReceiveError(error: String) {

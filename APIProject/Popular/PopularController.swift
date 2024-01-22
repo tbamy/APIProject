@@ -34,11 +34,12 @@ class PopularController: UIViewController {
         }
         activityIndicator.startAnimating()
         popularViewModel.responseHandler = { [weak self] popularModel in
-            DispatchQueue.main.async { [weak self] in
-                self?.popularModel = popularModel
-                self?.activityIndicator.stopAnimating()
-                self?.popularTable.reloadData()
-            }
+            self?.didReceiveResponse(data: popularModel)
+//            DispatchQueue.main.async { [weak self] in
+//                self?.popularModel = popularModel
+//                self?.activityIndicator.stopAnimating()
+//                self?.popularTable.reloadData()
+//            }
         }
         
         popularViewModel.errorHandler = { error in
