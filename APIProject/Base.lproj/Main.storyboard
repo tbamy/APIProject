@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,7 +113,16 @@
         <scene sceneID="G8e-6r-KNH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6ow-yh-UGi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Books" image="book.pages" catalog="system" selectedImage="book.pages.fill" id="aSt-Nf-7ml"/>
+                    <tabBarItem key="tabBarItem" title="Books" image="book.pages" catalog="system" id="aSt-Nf-7ml">
+                        <color key="badgeColor" systemColor="labelColor"/>
+                        <imageReference key="selectedImage" image="book.pages.fill" catalog="system" renderingMode="hierarchical" variableValue="1">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mKt-ek-YFa">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -131,7 +141,16 @@
         <scene sceneID="4Lt-PH-G44">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bLo-sS-lvo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Popular" image="list.bullet.rectangle" catalog="system" selectedImage="list.bullet.rectangle.fill" id="k2V-uR-bOG"/>
+                    <tabBarItem key="tabBarItem" title="Popular" image="list.bullet.rectangle" catalog="system" id="k2V-uR-bOG">
+                        <color key="badgeColor" systemColor="labelColor"/>
+                        <imageReference key="selectedImage" image="list.bullet.rectangle.fill" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CSV-7K-Ocf">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -152,8 +171,17 @@
         <image name="book.pages.fill" catalog="system" width="107" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

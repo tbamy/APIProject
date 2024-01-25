@@ -35,23 +35,25 @@ class BooksController: UIViewController {
         
         Task {
             await bookViewModel.fetchBooks()
-        }
-        
-            activityIndicator.startAnimating()
-        bookViewModel.responseHandler = { [weak self] booksModel in
-            self?.didReceiveResponse(data: booksModel)
             
-//            DispatchQueue.main.async { [weak self] in
-////                print(booksModel?.results)
-//                self?.booksModel = booksModel
-//                self?.activityIndicator.stopAnimating()
-//                self?.booksTable.reloadData()
-//            }
         }
         
-        bookViewModel.errorHandler = { error in
-            print("error is \(error!)")
-        }
+//            activityIndicator.startAnimating()
+//        bookViewModel.responseHandler = { [weak self] booksModel in
+//            self?.didReceiveResponse(data: booksModel)
+//            
+////            DispatchQueue.main.async { [weak self] in
+//////                print(booksModel?.results)
+////                self?.booksModel = booksModel
+////                self?.activityIndicator.stopAnimating()
+////                self?.booksTable.reloadData()
+////            }
+//        }
+//        
+//        bookViewModel.errorHandler = { error in
+//            self.didReceiveError(error: error!)
+////            print("error is \(error!)")
+//        }
     }
     
 //    func fetchBooks() async {
@@ -80,12 +82,12 @@ class BooksController: UIViewController {
 
 extension BooksController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return booksModel?.results?.books?.count ?? 0
+        return booksModel?.results?.books.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BooksTableViewCell", for: indexPath) as! BooksTableViewCell
-        if let book = booksModel?.results?.books?[indexPath.row] {
+        if let book = booksModel?.results?.books[indexPath.row] {
             cell.updateCell(with: book)
         }
         cell.selectionStyle = .none
@@ -98,7 +100,7 @@ extension BooksController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedData = booksModel?.results?.books?[indexPath.row]
+        let selectedData = booksModel?.results?.books[indexPath.row]
         let detailsView = BooksDetailViewController()
         detailsView.bookData = selectedData
         navigationController?.pushViewController(detailsView, animated: true)

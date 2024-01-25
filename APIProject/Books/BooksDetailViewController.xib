@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgf-WD-0cz">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="863"/>
+                            <rect key="frame" x="0.0" y="49" width="393" height="778"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3D-xJ-QBg">
                                     <rect key="frame" x="50" y="0.0" width="293" height="28.666666666666668"/>
@@ -92,9 +92,9 @@
                         <constraint firstItem="lgf-WD-0cz" firstAttribute="centerX" secondItem="Jng-71-0jE" secondAttribute="centerX" id="6lA-Tz-Ssl"/>
                         <constraint firstAttribute="trailing" secondItem="lgf-WD-0cz" secondAttribute="trailing" id="Kj5-UX-Lw6"/>
                         <constraint firstItem="lgf-WD-0cz" firstAttribute="leading" secondItem="Jng-71-0jE" secondAttribute="leading" id="OmR-c4-3Se"/>
-                        <constraint firstItem="lgf-WD-0cz" firstAttribute="bottom" secondItem="nQD-pc-0B5" secondAttribute="bottom" constant="11" id="Qkl-jp-hqu"/>
-                        <constraint firstItem="lgf-WD-0cz" firstAttribute="top" secondItem="Jng-71-0jE" secondAttribute="top" id="Wjj-Zh-x36"/>
-                        <constraint firstAttribute="bottom" secondItem="lgf-WD-0cz" secondAttribute="bottom" constant="-11" id="vCm-RN-Uat"/>
+                        <constraint firstItem="lgf-WD-0cz" firstAttribute="bottom" secondItem="nQD-pc-0B5" secondAttribute="bottom" constant="-25" id="Qkl-jp-hqu"/>
+                        <constraint firstItem="lgf-WD-0cz" firstAttribute="top" secondItem="Jng-71-0jE" secondAttribute="top" constant="49" id="Wjj-Zh-x36"/>
+                        <constraint firstAttribute="bottom" secondItem="lgf-WD-0cz" secondAttribute="bottom" constant="25" id="vCm-RN-Uat"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="lGL-fM-yny"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="nQD-pc-0B5"/>

@@ -25,12 +25,51 @@ class PopularViewModel {
     var responseHandler: ((PopularModel?) -> Void)?
     var errorHandler: ((String?) -> Void)?
     
+    @MainActor
     func fetchPopular() async {
         do {
-            let popularModel = try await networkCall.PopularFetch(url: URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN")!)
-            responseHandler?(popularModel)
+            if let storedRecord = RealmHelper.shared.realm.objects(PopularModel.self).first{
+                delegate?.didReceiveResponse(data: storedRecord)
+//                responseHandler?(storedRecord)
+            }else{
+                let popularModel = try await networkCall.PopularFetch(url: URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN")!)
+                if let popularRecord = popularModel{
+                    try RealmHelper.shared.realm.write({
+                        RealmHelper.shared.realm.add(popularRecord)
+                        delegate?.didReceiveResponse(data: popularRecord)
+//                        self.responseHandler?(popularRecord)
+                    })
+                }
+            }
+            
+            
         } catch let error {
-            errorHandler?(error.localizedDescription)
+            delegate?.didReceiveError(error: "error")
+//            errorHandler?(error.localizedDescription)
         }
     }
 }
+
+
+//func fetchPopular() async {
+//    do {
+//        let keyToFetch = "popularResults"
+//        if let storedInformation =  UserDefaults.standard.object(forKey: keyToFetch),
+//           let StoredPopularModel = try? JSONDecoder().decode(PopularModel.self, from: storedInformation as! Data)
+//        {
+//            responseHandler?(StoredPopularModel)
+//            
+//        }else{
+//            let popularModel = try await networkCall.PopularFetch(url: URL(string: "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=WKHndJGECQsOKf2XYga2eyWRsDCygmdN")!)
+//            if let encodedInformation = try? JSONEncoder().encode(popularModel){
+//                UserDefaults.standard.set(encodedInformation, forKey: keyToFetch)
+//            }
+//            
+//            responseHandler?(popularModel)
+//        }
+//        
+//        
+//    } catch let error {
+//        errorHandler?(error.localizedDescription)
+//    }
+//}

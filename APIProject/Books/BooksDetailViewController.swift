@@ -28,7 +28,7 @@ class BooksDetailViewController: UIViewController {
             imgLabel.kf.indicatorType = .activity
             imgLabel.kf.setImage(with: imageURL)
         }
-        if let content = bookData?.description{
+        if let content = bookData?.book_description{
             contentLabel.text = content
         }
         

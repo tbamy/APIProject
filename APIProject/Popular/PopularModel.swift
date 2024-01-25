@@ -6,15 +6,18 @@
 //
 
 import Foundation
-struct PopularModel: Codable{
-    let results: [PopularObj]?
+import Realm
+import RealmSwift
+
+
+class PopularModel: Object, Codable{
+    @Persisted var results: List<PopularObj>
 }
 
-struct PopularObj: Codable{
-    let title: String?
-    let source: String?
-    let type: String?
-    let published_date: String?
-    
-    let abstract: String?
+class PopularObj: Object, Codable{
+    @Persisted var title: String?
+    @Persisted var source: String?
+    @Persisted var type: String?
+    @Persisted var published_date: String?
+    @Persisted var abstract: String?
 }

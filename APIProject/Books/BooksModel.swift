@@ -6,21 +6,33 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
-struct BooksModel: Codable{
-    let results: Results?
+
+class BooksModel: Object, Codable{
+    @Persisted var results: Results?
 }
 
-struct Results: Codable{
-    let books: [BooksObj]?
+class Results: Object, Codable{
+    @Persisted var books: List<BooksObj>
 }
 
-struct BooksObj: Codable{
+class BooksObj: Object, Codable{
     
-    let title: String?
-    let author: String?
-    let price: String?
-    let book_image: String?
-    let description: String?
-    let amazon_product_url: String?
+    @Persisted var title: String?
+    @Persisted var author: String?
+    @Persisted var price: String?
+    @Persisted var book_image: String?
+    @Persisted var book_description: String?
+    @Persisted var amazon_product_url: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case author = "author"
+        case price = "price"
+        case book_image = "book_image"
+        case amazon_product_url = "amazon_product_url"
+        case book_description = "description"
+    }
 }

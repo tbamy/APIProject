@@ -27,24 +27,27 @@ class PopularController: UIViewController {
         popularTable.dataSource = self
         popularTable.delegate = self
         
+        popularViewModel.delegate = self
+        
         category.text = "Popular Stories"
         
         Task {
             await popularViewModel.fetchPopular()
         }
-        activityIndicator.startAnimating()
-        popularViewModel.responseHandler = { [weak self] popularModel in
-            self?.didReceiveResponse(data: popularModel)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.popularModel = popularModel
-//                self?.activityIndicator.stopAnimating()
-//                self?.popularTable.reloadData()
-//            }
-        }
+//        activityIndicator.startAnimating()
+//        popularViewModel.responseHandler = { [weak self] popularModel in
+//            self?.didReceiveResponse(data: popularModel)
+////            DispatchQueue.main.async { [weak self] in
+////                self?.popularModel = popularModel
+////                self?.activityIndicator.stopAnimating()
+////                self?.popularTable.reloadData()
+////            }
+//        }
         
-        popularViewModel.errorHandler = { error in
-            print("error is \(error!)")
-        }
+//        popularViewModel.errorHandler = { error in
+//            self.didReceiveError(error: error!)
+////            print("error is \(error!)")
+//        }
     }
     
 //    func fetchPopular() async {
@@ -74,12 +77,12 @@ class PopularController: UIViewController {
 
 extension PopularController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return popularModel?.results?.count ?? 0
+        return popularModel?.results.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PopularTableViewCell", for: indexPath) as! PopularTableViewCell
-        if let results = popularModel?.results?[indexPath.row] {
+        if let results = popularModel?.results[indexPath.row] {
             cell.updateCell(with: results)
         }
         cell.selectionStyle = .none
@@ -92,7 +95,7 @@ extension PopularController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let selectedData = popularModel?.results?[indexPath.row]
+        let selectedData = popularModel?.results[indexPath.row]
 //        print(selectedData!)
         let detailsView = PopularDetailsViewController()
         
